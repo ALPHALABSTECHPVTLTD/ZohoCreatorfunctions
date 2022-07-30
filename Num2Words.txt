@@ -1,6 +1,6 @@
 string NumToWordInIndian(int n)
 {
-	// I had created a function with the name "NumToWordInIndian" with Integer "n" as parameter
+	// I have created a function with the name "NumToWordInIndian" with Integer "n" as parameter
 	Digits = {"Lakhs","Thousand","Hundred"};	// "Digits" is a list to which we are adding to word when the number of digits exceeds
 	Num = {"Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"};		// "Num" is a list of numbers wording from one to nineteen
 	Tens = {"Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};	 // "tens" is a list to which we are adding to word when the placeholder of tens digit exceeds
