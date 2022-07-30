@@ -1,0 +1,49 @@
+string NumToWordInIndian(int n)
+{
+	// I had created a function with the name "NumToWordInIndian" with Integer "n" as parameter
+	Digits = {"Lakhs","Thousand","Hundred"};	// "Digits" is a list to which we are adding to word when the number of digits exceeds
+	Num = {"Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"};		// "Num" is a list of numbers wording from one to nineteen
+	Tens = {"Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};	 // "tens" is a list to which we are adding to word when the placeholder of tens digit exceeds
+	NumInWords = "";		// "NumInWords" is a string which is empty and the value which return at the end
+	if(n == 0)
+	{
+		return "Zero";		// if "n" is zero then it will return zero as output
+	}
+	AltNum = n;	// "AltNum" is an alternative value for the number, even we didn't use the function will work
+	crores = (AltNum / 10000000).floor(); 	 // "crores" will be the value of which how many crores are there in the given number
+	AltNum = AltNum % 10000000;		// remaining value is taken and kept it in "AltNum"
+	if(crores != 0)
+	{
+		NumInWords = NumInWords + thisapp.NumToWordInIndian(crores) + "Crores ";		// If there is a value for crore, it will call itself (recursive function)
+	}
+	lakhs = (AltNum / 100000).floor();
+	AltNum = AltNum % 100000;
+	thousand = (AltNum / 1000).floor();
+	AltNum = AltNum % 1000;
+	hundreds = (AltNum / 100).floor();		// The same thing we did to "crores" will be done to "lakhs" and "thousands"
+	AltNum = AltNum % 100;
+	NumList = {lakhs,thousand,hundreds,AltNum};		// The "NumList" contains the values according to the digits contains in "Digits" list with adding another element named remaining number and all values in NumList will be below 99
+	i = 0;
+	for each  Ele in NumList
+	{
+		if(Ele != 0)
+		{
+			AltEle = Ele;
+			if(AltEle > 19)
+			{
+				NumInWords = NumInWords + Tens.get((AltEle / 10).floor() - 2) + " ";	 // The placeholder of Tens digit will be added
+				AltEle = AltEle % 10;
+			}
+			if(AltEle != 0)
+			{
+				NumInWords = NumInWords + Num.get(AltEle) + " ";	 // The number value less than 19 and the one's digit of number will be added
+			}
+			if(i != 3)
+			{
+				NumInWords = NumInWords + Digits.get(i) + " "; 	// The value of digits will be added
+			}
+		}
+		i = i + 1;
+	}
+	return NumInWords;		// returns the value of "NumInWords"
+}
